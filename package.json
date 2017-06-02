@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "karma": "export pactmockurl=http://192.168.99.101:1234 && karma start",
-    "karma-local": "cd ../PactBroker/ && ./start-broker.sh & cd ../PactMock/ && ./start-mock.sh && cd ../ExploratoryTestingGame/ && sleep 1s && karma start && cd ../PactBroker/ && ./stop-broker.sh && cd ../PactMock/ && ./stop-mock.sh",
-    "cypress": "node ./bin/www & cypress run"
+    "cypress": "node ./bin/www & cypress run",
+    "publish-pacts": "node publish-pacts.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -23,7 +23,10 @@
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
+    "karma-pact": "0.0.7",
     "karma-sinon": "^1.0.5",
+    "pact": "^2.5.0",
+    "pact-web": "^2.5.0",
     "request": "^2.72.0",
     "sinon": "^1.17.7"
   }

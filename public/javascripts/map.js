@@ -10,7 +10,8 @@ function generateMap(callback) {
     
     $.ajax({
         type: "GET",
-        url: mmaurl+"/api/mapmaker",
+        url: "http://localhost:1234/api/mapmaker",
+        //url: mmaurl+"/api/mapmaker",
         dataType: "json",
         accepts: "application/json",
         headers: {
