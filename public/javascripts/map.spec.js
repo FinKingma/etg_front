@@ -34,7 +34,6 @@
           },
           willRespondWith: {
             status: 200,
-            headers: { "Content-Type": "application/json" },
             body: {
                 "posY0": {
                     "posX0": {
@@ -61,7 +60,6 @@
       it('successfully verifies', function(done) {
         provider.verify()
           .then(function(a) {
-              sendToBroker('http://54.197.31.162/',_interactions);
                 done()
           }, function(e) {
             done.fail(e)
@@ -70,17 +68,3 @@
     })
   })
 })()
-
-function sendToBroker(baseurl,interactions) {
-    var xhr = new XMLHttpRequest();
-    var url = baseurl+'/pacts/provider/MapMakerApi/consumer/ExploratoryTestingGame/version/8.0.0';
-    xhr.onload = function(event) {
-        console.log('succesfully send to pact broker.');
-    };
-    xhr.onerror = function() {
-        console.log('not so succesfully send to pact broker.');
-    };
-    xhr.open('PUT', url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({interactions: interactions}));
-}
