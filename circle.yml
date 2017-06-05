@@ -8,6 +8,11 @@ machine:
     pburl: null
     pactbroker: null
 
+dependencies:
+  override:
+    - npm install
+    - npm install -g cypress-cli
+
 test:
   override:
     - npm run test:unit
