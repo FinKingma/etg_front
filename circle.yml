@@ -21,8 +21,6 @@ test:
     - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:$CIRCLE_SHA1 .
     - docker run -d -p 2000:2000 --name front $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
     - curl -sSf http://localhost:2000 > /dev/null
-    - docker stop front
-    - docker rm front
     - npm run publish-pacts
 
 deployment:
