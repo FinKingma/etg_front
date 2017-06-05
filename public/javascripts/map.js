@@ -6,11 +6,15 @@ var Map = function(callback) {
 
 function generateMap(callback) {
     var mmaurl = $("#mmaurl").val();
+    if (!mmaurl) {
+        console.log('no mapmakerurl found, fallback initiated to http://localhost:1234');
+        mmaurl = 'http://localhost:1234';
+    }
     console.log('env: ' + mmaurl);
     
     $.ajax({
         type: "GET",
-        url: "http://localhost:1234/api/mapmaker",
+        url: mmaurl+"/api/mapmaker",
         dataType: "json",
         accepts: "application/json",
         headers: {
