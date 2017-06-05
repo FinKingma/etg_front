@@ -19,8 +19,8 @@ test:
   post:
     - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:latest .
     - docker run -d -p 2000:2000 --name frontend $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:latest
-    - docker ps
-    - curl -sSf http://localhost:2000 > /dev/null
+    #- docker ps
+    #- curl -sSf http://localhost:2000 > /dev/null
     - npm run publish-pacts
 
 deployment:
