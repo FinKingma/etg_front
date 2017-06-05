@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "export MAPMAKERURL=http://localhost:2000/ && node ./bin/www",
+    "start": "node ./bin/www",
     "test:unit": "karma start",
     "test:unit-int": "karma start karma-pact.conf.js",
-    "test:web": "export MAPMAKERURL=http://localhost:2000/ && node ./bin/www & cypress run",
+    "test:web": "node ./bin/www & cypress run",
     "publish-pacts": "node publish-pacts.js"
   },
   "dependencies": {
