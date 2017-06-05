@@ -20,13 +20,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'http://code.jquery.com/jquery-latest.min.js',
-        'public/javascripts/scorecard.js',
-        'public/javascripts/hero.js',
-        'public/javascripts/hero.spec.js',
-        'public/javascripts/timebox.js',
-        'public/javascripts/timebox.spec.js',
-        'public/javascripts/discoverables.js',
-        'public/javascripts/discoverables.spec.js'
+        'node_modules/pact-web/pact-web.js',
+        'public/javascripts/map.js',
+        'public/javascripts/map.spec.js'
     ],
 
 

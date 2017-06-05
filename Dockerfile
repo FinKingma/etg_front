@@ -7,9 +7,9 @@ MAINTAINER Fin Kingma
 
 RUN mkdir -p /usr/src/etg
 WORKDIR /usr/src/etg
-COPY package.json /usr/src/etg/
-RUN npm install
 COPY . /usr/src/etg
+RUN npm install
+
 
 EXPOSE 2000
 

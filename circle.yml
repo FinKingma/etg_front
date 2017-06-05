@@ -1,0 +1,26 @@
+machine:
+  node:
+    version: 4.6.0
+  services:
+    - docker
+  environment:
+    pbport: null
+    pburl: null
+    pactbroker: null
+
+test:
+  override:
+    - npm run test:unit
+    - npm run test:unit-int
+    - npm run test:web
+  post:
+    - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:$CIRCLE_SHA1 .
+    - docker run -d -p 2000:2000 --name front $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
+    #- hostport=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "3000/tcp") 0).HostPort}}' front)
+    - curl -sSf http://localhost:2000 > /dev/null
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - ./deploy.sh
