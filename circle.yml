@@ -4,8 +4,8 @@ machine:
   services:
     - docker
   environment:
-    PACTBROKERURL: 'http://54.197.31.162:80/'
-    MAPMAKERURL: 'http://54.197.31.162:3000/'
+    PACTBROKERURL: 'http://localhost:80'
+    MAPMAKERURL: 'http://localhost:3000'
 
 dependencies:
   post:

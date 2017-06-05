@@ -53,7 +53,7 @@ make_task_def(){
 				}
 			],
             "environment" : [
-                { "name" : "MAPMAKERURL", "value" : "http://54.197.31.162:3000/" }
+                { "name" : "MAPMAKERURL", "value" : "http://localhost:3000" }
             ]
 		}
 	]'
