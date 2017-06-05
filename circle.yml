@@ -8,8 +8,7 @@ machine:
     MAPMAKERURL: 'http://54.197.31.162:3000/'
 
 dependencies:
-  override:
-    - npm install
+  post:
     - npm install -g cypress-cli
 
 test:
