@@ -51,7 +51,10 @@ make_task_def(){
 					"containerPort": 2000,
 					"hostPort": 2000
 				}
-			]
+			],
+            "environment" : [
+                { "name" : "MAPMAKERURL", "value" : "http://54.197.31.162:3000/" }
+            ]
 		}
 	]'
 	
