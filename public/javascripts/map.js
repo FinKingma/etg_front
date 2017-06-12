@@ -22,7 +22,7 @@ function generateMap(callback) {
             "bugs": "4"
         },
         success: processData,
-        error: function(){ return false;}
+        error: function(){ throw new Error('something went terribly wrong accessing the mapmaker.')}
     });
 
     function processData(data)
