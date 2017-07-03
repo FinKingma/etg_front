@@ -5,9 +5,7 @@ if (!process.env.PACTBROKERURL) throw new Error('Please specify where the pactbr
 const opts = {
   pactUrls: [path.resolve(__dirname, './pacts/exploratorytestinggame-mapmakerapi.json')],
   pactBroker: process.env.PACTBROKERURL,
-  //pactBrokerUsername: 'dXfltyFMgNOFZAxr8io9wJ37iUpY42M',
-  //pactBrokerPassword: 'O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1',
-  //tags: ['prod', 'test'],
+  tags: [process.env.TAG],
   consumerVersion: getDateTime()
 }
 

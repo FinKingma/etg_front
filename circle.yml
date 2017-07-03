@@ -6,6 +6,7 @@ machine:
   environment:
     PACTBROKERURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:8000'
     MAPMAKERURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:3000'
+    TAG: 'prod'
 
 dependencies:
   post:
