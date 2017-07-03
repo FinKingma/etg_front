@@ -25,7 +25,7 @@
         provider.addInteraction({
           uponReceiving: 'request for an awesome map',
           withRequest: {
-            method: 'GET',
+            method: 'get',
             path: '/api/mapmaker',
             headers: {
                 'features': '30',
