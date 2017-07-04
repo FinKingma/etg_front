@@ -1,10 +1,10 @@
-var Map = function(callback) {
+var Map = function(settings, callback) {
     Map.lines = 13;
-    generateMap(callback);
+    generateMap(settings, callback);
 };
 
 
-function generateMap(callback) {
+function generateMap(settings, callback) {
     var mmaurl = $("#mmaurl").val();
     if (!mmaurl) {
         console.log('no mapmakerurl found, fallback initiated to http://localhost:1234');
@@ -18,11 +18,14 @@ function generateMap(callback) {
         dataType: "json",
         accepts: "application/json",
         headers: {
-            "features": "30",
-            "bugs": "4"
+            "features": settings.features,
+            "bugs": settings.bugs
         },
         success: processData,
-        error: function(){ throw new Error('something went terribly wrong accessing the mapmaker.')}
+        error: function(){ 
+            callback(undefined);
+            console.log('mapmaker was called with ' + settings.bugs + ' bugs and ' + settings.features + ' features and could not respond with an awesome map.')
+        }
     });
 
     function processData(data)
