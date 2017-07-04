@@ -18,10 +18,11 @@ function startGame() {
     console.log('generating a new map');
     var settings = {
         features: 30,
-        bugs: 4
+        bugs: 115
     }
     new Map(settings, function(map) {
         console.log('retrieving goal');
+        if (!map) return;
         Map.getGoal(function(goalPos) {
             new Goal(goalPos);
             var controls = $("#controls").val();

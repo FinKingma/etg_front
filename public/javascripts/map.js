@@ -23,8 +23,8 @@ function generateMap(settings, callback) {
         },
         success: processData,
         error: function(){ 
+            alert('mapmaker was called with ' + settings.bugs + ' bugs and ' + settings.features + ' features and could not respond with an awesome map.');
             callback(undefined);
-            console.log('mapmaker was called with ' + settings.bugs + ' bugs and ' + settings.features + ' features and could not respond with an awesome map.')
         }
     });
 
