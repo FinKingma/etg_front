@@ -42,6 +42,10 @@
                     "posX1": {
                         "pathRight": Pact.Matchers.term({matcher: "^(Working|Broken)$", generate: "Working"}),
                         "pathDown": Pact.Matchers.term({matcher: "^(Open|Feature)$", generate: "Open"})
+                    },
+                    "posX2": {
+                        "pathRight": Pact.Matchers.term({matcher: "^(Working|Broken)$", generate: "Working"}),
+                        "pathDown": Pact.Matchers.term({matcher: "^(Open|Feature)$", generate: "Open"})
                     }
                 }
             }
