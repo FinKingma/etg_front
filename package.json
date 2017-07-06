@@ -7,7 +7,7 @@
     "test:unit": "karma start",
     "test:unit-int": "karma start karma-pact.conf.js",
     "test:web": "node ./bin/www & cypress run",
-    "publish-pacts": "node publish-pacts.js"
+    "pact-publish": "node publish-pacts.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
