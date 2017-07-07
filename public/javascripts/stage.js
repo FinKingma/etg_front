@@ -17,8 +17,8 @@ $(document).ready(function() {
 function startGame() {
     console.log('generating a new map');
     var settings = {
-        features: 30,
-        bugs: 115
+        features: 15,
+        bugs: 4
     }
     new Map(settings, function(map) {
         console.log('retrieving goal');
