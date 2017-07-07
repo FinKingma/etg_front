@@ -230,6 +230,6 @@ function endSession(achieved, features, bugs, explored) {
         context.fillText("DONE!",(sw / 4),sh / 2);
     } else {
         context.font=String(sw / 6) + "px Quattrocento";
-        context.fillText("TIME"S UP!",(sw / 15  ),sh / 2);
+        context.fillText("TIME'S UP!",(sw / 15  ),sh / 2);
     }
 }
