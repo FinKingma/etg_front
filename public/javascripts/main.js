@@ -59,11 +59,11 @@ function gotoEnd(goal) {
             }
         }
     }
-    document.getElementById("timeboxHolder").style.display = 'none';
-    document.getElementById("explorationHolder").style.display = 'block';
-    document.getElementById("goalHolder").style.display = 'block';
-    document.getElementById("scoreHolder").style.display = 'block';
-    document.getElementById("goal").innerText = goal? 'Yes! :)' : 'No :(';
+    document.getElementById("timeboxHolder").style.display = "none";
+    document.getElementById("explorationHolder").style.display = "block";
+    document.getElementById("goalHolder").style.display = "block";
+    document.getElementById("scoreHolder").style.display = "block";
+    document.getElementById("goal").innerText = goal? "Yes! :)" : "No :(";
     var points = 0;
     points += (discoveredBugs.length * 100);
     points += (discoveredFeatures.length * 100);
@@ -73,5 +73,5 @@ function gotoEnd(goal) {
     points *= (explored/total);
     document.getElementById("score").innerText = Math.round(points);
 
-    document.getElementById("exploration").innerText = Math.round((explored / total) * 100) + '%';
+    document.getElementById("exploration").innerText = Math.round((explored / total) * 100) + "%";
 }

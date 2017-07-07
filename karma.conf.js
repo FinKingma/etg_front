@@ -8,25 +8,25 @@ module.exports = function(config) {
     },
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: "",
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'pact', 'sinon'],
+    frameworks: ["jasmine", "pact", "sinon"],
     pact: {},
 
 
     // list of files / patterns to load in the browser
     files: [
-        'http://code.jquery.com/jquery-latest.min.js',
-        'public/javascripts/scorecard.js',
-        'public/javascripts/hero.js',
-        'public/javascripts/hero.spec.js',
-        'public/javascripts/timebox.js',
-        'public/javascripts/timebox.spec.js',
-        'public/javascripts/discoverables.js',
-        'public/javascripts/discoverables.spec.js'
+        "http://code.jquery.com/jquery-latest.min.js",
+        "public/javascripts/scorecard.js",
+        "public/javascripts/hero.js",
+        "public/javascripts/hero.spec.js",
+        "public/javascripts/timebox.js",
+        "public/javascripts/timebox.spec.js",
+        "public/javascripts/discoverables.js",
+        "public/javascripts/discoverables.spec.js"
     ],
 
 
@@ -42,13 +42,13 @@ module.exports = function(config) {
 
 
     // test results reporter to use
-    // possible values: 'dots', 'progress'
+    // possible values: "dots", "progress"
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['junit'],
+    reporters: ["junit"],
 
     junitReporter: {
       outputDir: process.env.JUNIT_REPORT_PATH,
-      outputFile: 'unit-test-results.xml',
+      outputFile: "unit-test-results.xml",
       useBrowserName: false
     },
 
@@ -72,11 +72,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome_without_security'],
+    browsers: ["Chrome_without_security"],
     customLaunchers: {
       Chrome_without_security: {
-        base: 'Chrome',
-        flags: ['--disable-web-security']
+        base: "Chrome",
+        flags: ["--disable-web-security"]
       }
     },
 
