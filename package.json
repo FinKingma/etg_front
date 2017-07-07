@@ -26,6 +26,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-pact": "0.0.7",
     "karma-sinon": "^1.0.5",
+    "mocha-junit-reporter": "^1.13.0",
     "pact": "^2.5.0",
     "pact-web": "^2.5.0",
     "request": "^2.72.0",
