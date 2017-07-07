@@ -48,7 +48,7 @@ module.exports = function(config) {
 
     junitReporter: {
       outputDir: process.env.JUNIT_REPORT_PATH,
-      outputFile: process.env.JUNIT_REPORT_NAME,
+      outputFile: 'unit-test-results.xml',
       useBrowserName: false
     },
 
