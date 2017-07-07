@@ -5,7 +5,7 @@
     var client, provider
 
     beforeAll(function(done) {
-      provider = Pact({ consumer: 'ExploratoryTestingGame', provider: 'MapMakerApi' })
+      provider = Pact({ consumer: "ExploratoryTestingGame", provider: "MapMakerApi" })
 
       // required for slower Travis CI environment
       setTimeout(function () { done() }, 2000)
@@ -22,13 +22,13 @@
     describe("can handle an awesome map", function () {
       beforeAll(function (done) {
         provider.addInteraction({
-          uponReceiving: 'request for an awesome map',
+          uponReceiving: "request for an awesome map",
           withRequest: {
-            method: 'get',
-            path: '/api/mapmaker',
+            method: "get",
+            path: "/api/mapmaker",
             headers: {
-                'features': '30',
-                'bugs':'4'
+                "features": "30",
+                "bugs":"4"
             }
           },
           willRespondWith: {
@@ -64,7 +64,7 @@
       })
 
       // verify with Pact, and reset expectations
-      it('successfully verifies', function(done) {
+      it("successfully verifies", function(done) {
         provider.verify()
           .then(function(a) {
                 done()
@@ -77,13 +77,13 @@
     describe("can handle an invalid request for map", function () {
       beforeAll(function (done) {
         provider.addInteraction({
-          uponReceiving: 'invalid request with too many bugs',
+          uponReceiving: "invalid request with too many bugs",
           withRequest: {
-            method: 'get',
-            path: '/api/mapmaker',
+            method: "get",
+            path: "/api/mapmaker",
             headers: {
-                'features': '0',
-                'bugs':'115'
+                "features": "0",
+                "bugs":"115"
             }
           },
           willRespondWith: {
@@ -105,7 +105,7 @@
         });
       })
 
-      it('successfully verifies', function(done) {
+      it("successfully verifies", function(done) {
         provider.verify()
           .then(function(a) {
                 done()

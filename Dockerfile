@@ -1,7 +1,7 @@
 #FROM alpine:3.2
 FROM node:alpine
 
-MAINTAINER Fin Kingma
+MAINTAINER fkingma@xebia.com
 
 #installing Exploratory Testing Game in container
 RUN mkdir -p /usr/src/etg-front

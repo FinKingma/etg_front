@@ -52,7 +52,7 @@ function Hero(controls, gameWidth, screenWidth, screenHeight) {
             });
             break;
         case "touch":
-            $("body").on('touchstart', '#gamestage', function(e) {
+            $("body").on("touchstart", "#gamestage", function(e) {
                 mouseX = e.originalEvent.touches[0].pageX;
                 mouseY = e.originalEvent.touches[0].pageY;
             });
@@ -113,7 +113,7 @@ Hero.draw = function(context,width,height,margin) {
 };
 
 function moveHero(context, resizedWidth, resizedHeight) {
-    if (Hero.controls === 'keyboard') {
+    if (Hero.controls === "keyboard") {
         if (movLeft) Hero.speedX--;
         if (movRight) Hero.speedX++;
         if (movUp) Hero.speedY--;

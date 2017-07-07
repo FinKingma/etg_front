@@ -3,8 +3,8 @@ describe("hero", function() {
 
     beforeEach(function() {
         new Hero("keyboard",.7, 200, 100);
-        var canvas = document.createElement('canvas');
-        context = canvas.getContext('2d');
+        var canvas = document.createElement("canvas");
+        context = canvas.getContext("2d");
     });
 
     it("does not move over background", function() {

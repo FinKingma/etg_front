@@ -7,10 +7,10 @@ var Map = function(settings, callback) {
 function generateMap(settings, callback) {
     var mmaurl = $("#mmaurl").val();
     if (!mmaurl) {
-        console.log('no mapmakerurl found, fallback initiated to http://localhost:1234');
-        mmaurl = 'http://localhost:1234';
+        console.log("no mapmakerurl found, fallback initiated to http://localhost:1234");
+        mmaurl = "http://localhost:1234";
     }
-    console.log('env: ' + mmaurl);
+    console.log("env: " + mmaurl);
     
     $.ajax({
         type: "GET",
@@ -23,7 +23,7 @@ function generateMap(settings, callback) {
         },
         success: processData,
         error: function(){ 
-            alert('mapmaker was called with ' + settings.bugs + ' bugs and ' + settings.features + ' features and could not respond with an awesome map.');
+            alert("mapmaker was called with " + settings.bugs + " bugs and " + settings.features + " features and could not respond with an awesome map.");
             callback(undefined);
         }
     });
@@ -47,18 +47,18 @@ Map.draw = function(context,width,height,margin) {
                 if (Map.grid[keyY].hasOwnProperty(keyX)) {
                     for (var property in Map.grid[keyY][keyX]) {
                         if (Map.grid[keyY][keyX].hasOwnProperty(property)) {
-                            if (Map.grid[keyY][keyX][property] === 'Working' ||
-                                Map.grid[keyY][keyX][property] === 'Feature' ||
-                                Map.grid[keyY][keyX][property] === 'FeatureFound' ||
-                                Map.grid[keyY][keyX][property] === 'Broken' ||
-                                Map.grid[keyY][keyX][property] === 'BugFound' ||
+                            if (Map.grid[keyY][keyX][property] === "Working" ||
+                                Map.grid[keyY][keyX][property] === "Feature" ||
+                                Map.grid[keyY][keyX][property] === "FeatureFound" ||
+                                Map.grid[keyY][keyX][property] === "Broken" ||
+                                Map.grid[keyY][keyX][property] === "BugFound" ||
                                 Map.grid[keyY][keyX][property] === true) {
                                 switch(property) {
                                     case "pathRight":
-                                        drawHorizontalLine(keyY.split('posY')[1],keyX.split('posX')[1],Map.grid[keyY][keyX][property]);
+                                        drawHorizontalLine(keyY.split("posY")[1],keyX.split("posX")[1],Map.grid[keyY][keyX][property]);
                                         break;
                                     case "pathDown" :
-                                        drawVerticalLine(keyY.split('posY')[1],keyX.split('posX')[1],Map.grid[keyY][keyX][property]);
+                                        drawVerticalLine(keyY.split("posY")[1],keyX.split("posX")[1],Map.grid[keyY][keyX][property]);
                                         break;
                                 }
                             }
@@ -83,9 +83,9 @@ Map.getGoal = function(callback) {
                 if (Map.grid[keyY].hasOwnProperty(keyX)) {
                     for (var property in Map.grid[keyY][keyX]) {
                         if (Map.grid[keyY][keyX].hasOwnProperty(property)) {
-                            if (property === 'Goal') {
-                                goal.x = keyY.split('posY')[1];
-                                goal.y = keyX.split('posX')[1];
+                            if (property === "Goal") {
+                                goal.x = keyY.split("posY")[1];
+                                goal.y = keyX.split("posX")[1];
                                 callback(goal);
                             }
                         }
@@ -104,7 +104,7 @@ function drawHorizontalLine(posY,posX,type) {
     var lineX = (posX * (Map.sw / (Map.lines-1)))+Map.margin;
     var lineY = (posY * (Map.sh / (Map.lines-1)))+Map.margin;
     var lineLength = (Map.sw/(Map.lines-1));
-    defineColor(type, lineX, lineY, 'horizontal');
+    defineColor(type, lineX, lineY, "horizontal");
 
     Map.context.moveTo(lineX,lineY);
 
@@ -129,7 +129,7 @@ function drawVerticalLine(posY,posX,type) {
     var lineX = (posX * (Map.sw / (Map.lines-1)))+Map.margin;
     var lineY = (posY * (Map.sh / (Map.lines-1)))+Map.margin;
     var lineLength = (Map.sh/(Map.lines-1));
-    defineColor(type, lineX, lineY, 'vertical');
+    defineColor(type, lineX, lineY, "vertical");
 
     Map.context.moveTo(lineX, lineY);
 
@@ -150,7 +150,7 @@ function drawVerticalLine(posY,posX,type) {
 
 function defineColor(type,lineX,lineY,dir) {
     var grad;
-    if (dir === 'vertical') {
+    if (dir === "vertical") {
         grad= Map.context.createLinearGradient(lineX-2.5, lineY, lineX+2.5, lineY);
     } else {
         grad= Map.context.createLinearGradient(lineX, lineY-2.5, lineX, lineY+2.5);

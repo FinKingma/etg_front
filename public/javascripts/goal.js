@@ -11,11 +11,11 @@ Goal.draw = function(context,width,height,margin) {
     Goal.margin = margin;
     Goal.size = (Goal.sw/10);
 
-    $('#goal').css('background-size',Goal.size+'px ' + Goal.size+'px');
-    $('#goal').css('width',Goal.size+'px');
-    $('#goal').css('height',Goal.size+'px');
-    $('#goal').css('left',(Goal.sw/12)*Goal.x + Goal.margin - (Goal.size/2)+'px');
-    $('#goal').css('top',(Goal.sh/12)*Goal.y + Goal.margin - (Goal.size)+'px');
+    $("#goal").css("background-size",Goal.size+"px " + Goal.size+"px");
+    $("#goal").css("width",Goal.size+"px");
+    $("#goal").css("height",Goal.size+"px");
+    $("#goal").css("left",(Goal.sw/12)*Goal.x + Goal.margin - (Goal.size/2)+"px");
+    $("#goal").css("top",(Goal.sh/12)*Goal.y + Goal.margin - (Goal.size)+"px");
 
 
     /*context.beginPath();

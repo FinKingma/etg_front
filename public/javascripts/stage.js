@@ -15,28 +15,28 @@ $(document).ready(function() {
 });
 
 function startGame() {
-    console.log('generating a new map');
+    console.log("generating a new map");
     var settings = {
         features: 15,
         bugs: 4
     }
     new Map(settings, function(map) {
-        console.log('retrieving goal');
+        console.log("retrieving goal");
         if (!map) return;
         Map.getGoal(function(goalPos) {
             new Goal(goalPos);
             var controls = $("#controls").val();
-            console.log('playing with a ' + controls + '.');
+            console.log("playing with a " + controls + ".");
             new Hero(controls, gameWidth, window.innerWidth, window.innerHeight);
             new Discoverables();
             var scorecard = new Scorecard(scorecardWidth, secondsTillEnd);
-            console.log('preparing the stage...');
+            console.log("preparing the stage...");
             getInitialMapData(function() {
                 new timebox(secondsTillEnd, function(currentTimebox, totalTimebox) {
-                    console.log('tick');
+                    console.log("tick");
                     Scorecard.tickHandler(currentTimebox, totalTimebox);
                 }, function() {
-                    console.log('clearing');
+                    console.log("clearing");
                     endSession(false, Discoverables.BugsFound, Discoverables.FeaturesFound, scorecard.exploredPercentage);
                 });
 
@@ -62,11 +62,11 @@ function getInitialMapData(callback) {
             totalDiscoverables++;
         }
     }
-    console.log('total: ' + totalDiscoverables);
+    console.log("total: " + totalDiscoverables);
 
     //clear background
     stage.context.rect(0,0,stage.sw,stage.sh);
-    stage.context.fillStyle = 'rgba(150, 200, 200, 1)';
+    stage.context.fillStyle = "rgba(150, 200, 200, 1)";
     stage.context.fill();
 
     callback();
@@ -102,10 +102,10 @@ function checkForPickups() {
                 if (Map.grid[keyY].hasOwnProperty(keyX)) {
                     for (var property in Map.grid[keyY][keyX]) {
                         if (Map.grid[keyY][keyX].hasOwnProperty(property)) {
-                            if (Map.grid[keyY][keyX][property] === 'Feature' ||
-                                Map.grid[keyY][keyX][property] === 'Broken') {
-                                var posY = keyY.split('posY')[1];
-                                var posX = keyX.split('posX')[1];
+                            if (Map.grid[keyY][keyX][property] === "Feature" ||
+                                Map.grid[keyY][keyX][property] === "Broken") {
+                                var posY = keyY.split("posY")[1];
+                                var posX = keyX.split("posX")[1];
 
                                 var lineX = (posX * (Map.sw / (Map.lines-1)))+Map.margin;
                                 var lineY = (posY * (Map.sh / (Map.lines-1)))+Map.margin;
@@ -130,12 +130,12 @@ function checkForPickups() {
                                         break;
                                 }
                                 if (dist <= Hero.size) {
-                                    if (Map.grid[keyY][keyX][property] === 'Feature') {
-                                        Map.grid[keyY][keyX][property] = 'FeatureFound';
+                                    if (Map.grid[keyY][keyX][property] === "Feature") {
+                                        Map.grid[keyY][keyX][property] = "FeatureFound";
                                         Discoverables.discoverFeature(Scorecard);
                                     }
-                                    if (Map.grid[keyY][keyX][property] === 'Broken') {
-                                        Map.grid[keyY][keyX][property] = 'BugFound';
+                                    if (Map.grid[keyY][keyX][property] === "Broken") {
+                                        Map.grid[keyY][keyX][property] = "BugFound";
                                         Discoverables.discoverBug(Scorecard);
                                     }
                                 }
@@ -181,7 +181,7 @@ function drawStage(stage) {
             currentDiscoverables++;
         }
     }
-    console.log('now: ' + currentDiscoverables);
+    console.log("now: " + currentDiscoverables);
     Scorecard.explored(totalDiscoverables,currentDiscoverables);
 
 
@@ -204,8 +204,8 @@ function drawStage(stage) {
 function drawBackground(stage) {
     if (stage) {
         var my_gradient=stage.context.createLinearGradient(0,0,0,stage.sh);
-        my_gradient.addColorStop(0,'rgba(154,202,202,0.8)');
-        my_gradient.addColorStop(1,'rgba(81,164,164,0.8)');
+        my_gradient.addColorStop(0,"rgba(154,202,202,0.8)");
+        my_gradient.addColorStop(1,"rgba(81,164,164,0.8)");
         stage.context.fillStyle=my_gradient;
         stage.context.fillRect(0,0,stage.sw,stage.sh);
     }
@@ -221,15 +221,15 @@ function endSession(achieved, features, bugs, explored) {
     var sw = window.innerWidth * gameWidth;
     var sh = window.innerHeight;
 
-    context.fillStyle= 'rgba(255,255,255,0.7)';
+    context.fillStyle= "rgba(255,255,255,0.7)";
     context.fillRect(0,0,sw,sh);
 
-    context.fillStyle= 'black';
+    context.fillStyle= "black";
     if (achieved) {
         context.font=String(sw / 6) + "px Quattrocento";
         context.fillText("DONE!",(sw / 4),sh / 2);
     } else {
         context.font=String(sw / 6) + "px Quattrocento";
-        context.fillText("TIME'S UP!",(sw / 15  ),sh / 2);
+        context.fillText("TIME"S UP!",(sw / 15  ),sh / 2);
     }
 }
