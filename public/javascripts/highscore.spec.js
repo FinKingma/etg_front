@@ -22,7 +22,7 @@
     describe("can retrieve top 10 results", function () {
       beforeAll(function (done) {
         provider.addInteraction({
-            //state: 'Klaas wins with 100k points',
+            //state: "Klaas wins with 100k points",
             uponReceiving: "request for top 10 results",
             withRequest: {
                 method: "get",
@@ -30,11 +30,10 @@
             },
             willRespondWith: {
                 status: 200,
-                headers: { 'Content-Type': 'application/json' },
                 body: Pact.Matchers.eachLike({
-                    name: 'Klaas',
-                    score: '100000',
-                    datetime: '2017-07-10T11:50:39.276Z'
+                    name: Pact.Matchers.somethingLike("Klaas"),
+                    score: Pact.Matchers.somethingLike(100000),
+                    date: Pact.Matchers.somethingLike("2017-07-10T11:50:39.276Z")
                 })
             }
         })
@@ -47,7 +46,7 @@
         highscore.getTop10(function(data) {
             expect(data).toBeDefined();
             expect(data[0]["name"]).toBe("Klaas");
-            expect(data[0]["score"]).toBe("100000");
+            expect(data[0]["score"]).toBe(100000);
             done();
         });
       })
@@ -70,7 +69,7 @@
           withRequest: {
             method: "put",
             path: "/api/highscore",
-            data: {
+            headers: {
                 "name": "Klaas",
                 "score":"10000"
             }

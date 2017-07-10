@@ -23,7 +23,7 @@ var Highscore = function() {
             type: "PUT",
             url: this.hsaurl+"/api/highscore",
             dataType: "json",
-            data: {
+            headers: {
                 "name": person,
                 "score": points
             },
