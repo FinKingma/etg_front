@@ -51,7 +51,8 @@ make_task_def(){
 				}
 			],
             "environment" : [
-                { "name" : "MAPMAKERURL", "value" : "http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:3000" }
+                { "name" : "MAPMAKERURL", "value" : "http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:3000" },
+                { "name" : "HIGHSCOREURL", "value" : "http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:4000" }
             ]
 		}
 	]'
