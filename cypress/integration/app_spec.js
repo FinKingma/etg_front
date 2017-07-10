@@ -8,6 +8,7 @@ describe('ET game', function(){
         // https://on.cypress.io/api/visit
         cy.server();
         cy.route("GET","/api/mapmaker", "fixture:map.json");
+        cy.route("GET","/api/highscore", "fixture:highscores.json");
         cy.visit("http://localhost:2000");
     })
 
