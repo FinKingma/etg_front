@@ -3,7 +3,10 @@ const path = require('path')
 if (!process.env.PACTBROKERURL) throw new Error('Please specify where the pactbroker can be found with PACTBROKERURL');
 
 const opts = {
-  pactUrls: [path.resolve(__dirname, './pacts/exploratorytestinggame-highscoreapi.json')],
+  pactUrls: [
+      path.resolve(__dirname, './pacts/exploratorytestinggame-mapmakerapi.json'),
+      path.resolve(__dirname, './pacts/exploratorytestinggame-highscoreapi.json')
+  ],
   pactBroker: process.env.PACTBROKERURL,
   pactBrokerUsername: 'DPwCt3YC1WeNEX89vy4TAZbzoWkL5',
   pactBrokerPassword: 'uUZJtUmyOnutSoErGzTrGAXqmHMoy',
