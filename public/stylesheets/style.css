@@ -20,7 +20,7 @@ select, input {
   font-family: 'Quattrocento', serif;
 }
 
-body, input,h1 {
+body, input,h1,h2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -50,6 +50,7 @@ h1 {
 h2 {
   padding: 0px;
   margin: 0px;
+  margin-top:40px;
 }
 
 div#welcome {
@@ -59,7 +60,21 @@ div#welcome {
   left:50%;
   width:500px;
   margin-left:-250px;
-  margin-top:-120px;
+  margin-top:-250px;
+}
+
+table {
+  width:100%;
+  margin-top:10px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:2px 5px;
+  text-align: left;
+}
+th {
+  font-weight: bold;
 }
 
 input, select {

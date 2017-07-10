@@ -103,4 +103,5 @@ Scorecard.end = function(achieved, features, bugs, explored, seconds) {
         $("#achieved").text("Goal not achieved...");
         scorecard.timeboxText.text("Times up.");
     }
+    return points;
 };

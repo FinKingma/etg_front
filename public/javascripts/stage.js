@@ -214,7 +214,7 @@ function drawBackground(stage) {
 function endSession(achieved, features, bugs, explored) {
     if (play) clearInterval(play);
     var seconds = timebox.finishHandler();
-    Scorecard.end(achieved, features, bugs, explored, seconds);
+    var points = Scorecard.end(achieved, features, bugs, explored, seconds);
 
     //write end very big on stage
     var context = document.getElementById("gamestage").getContext("2d");
@@ -232,4 +232,19 @@ function endSession(achieved, features, bugs, explored) {
         context.font=String(sw / 6) + "px Quattrocento";
         context.fillText("TIME'S UP!",(sw / 15  ),sh / 2);
     }
+
+    context.font="10px Quattrocento";
+    context.fillText("Click anywhere to return to the homepage!",(sw / 10  ),sh - 50);
+
+    var person = prompt("If you want to submit your highscore, please enter your name");
+    if (person) {
+        var highscore = new Highscore();
+        highscore.saveHighscore(person, points,function() {
+            console.log('highscore saved');
+        });
+    }
+
+    document.getElementById("gamestage").addEventListener('click', function(event) {
+        window.location = "../";
+    });
 }

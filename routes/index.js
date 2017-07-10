@@ -1,25 +1,19 @@
 var express = require('express');
 var router = express.Router();
+if (!process.env.HIGHSCOREURL) throw new Error('Please specify where the highscore api can be found with HIGHSCOREURL');
 
 /* GET home page. */
-router.get('/skipwait', function(req, res, next) {
-  var controls;
-  if (isCallerMobile(req)) {
-    controls = ['touch'];
-  } else {
-    controls = ['keyboard','mouse','touch'];
-  }
-  res.render('index', { title: 'The Exploratory Testing Game', skipWait: true, controls: controls });
-});
-
 router.get('/', function(req, res, next) {
   var controls;
+  console.log('env: ' + process.env.HIGHSCOREURL)
+  var hsaurl = process.env.HIGHSCOREURL;
+  
   if (isCallerMobile(req)) {
     controls = ['touch'];
   } else {
     controls = ['keyboard','mouse','touch'];
   }
-  res.render('index', { title: 'The Exploratory Testing Game', skipWait: false, controls: controls});
+  res.render('index', { title: 'The Exploratory Testing Game', skipWait: false, controls: controls, hsaurl: hsaurl });
 });
 
 function isCallerMobile(req) {

@@ -56,7 +56,7 @@
           features: 30,
           bugs: 4
         }
-        var map = new Map(settings,function(data) {
+        new Map(settings,function(data) {
             expect(data).toBeDefined();
             expect(data["posY0"]["posX0"]["pathRight"]).toBe("Working");
             done();

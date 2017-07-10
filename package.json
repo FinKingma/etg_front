@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test:unit": "karma start",
-    "test:unit-int": "karma start karma-pact.conf.js",
+    "test:unit-int": "karma start karma-pact.conf.js ",
     "test:web": "node ./bin/www & cypress run",
     "pact-publish": "node publish-pacts.js"
   },

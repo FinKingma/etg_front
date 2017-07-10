@@ -2,6 +2,11 @@ extends layout
 
 block content
     link(href='https://fonts.googleapis.com/css?family=Della+Respira|Quattrocento|Halant:400,300|David+Libre|Roboto+Condensed|Raleway', rel='stylesheet', type='text/css')
+    script(src='http://code.jquery.com/jquery-latest.min.js')
+    script(src='/javascripts/highscore.js')
+    script(src='/javascripts/highscore-stage.js')
+    input(type="hidden" id="hsaurl" value="#{hsaurl}")
+    
     div(id="background")
         div(id="welcome")
             h1= title
@@ -11,3 +16,6 @@ block content
                     each control, i in controls
                         option(value=control, name=control) use #{control}
                 input(type="submit", value="Play", id="play")
+            
+            h2="Highscores"
+            div(id="highscores")
