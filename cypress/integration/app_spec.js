@@ -30,7 +30,7 @@ describe('ET game', function(){
             .get('#title').should('contain','The Exploratory Testing Game')
     });
 
-    it('ends after the timebox has ended', function(){
+    xit('ends after the timebox has ended', function(){
         cy
             .clock()
             .get('#play').click()

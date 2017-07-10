@@ -236,17 +236,15 @@ function endSession(achieved, features, bugs, explored) {
     context.font="10px Quattrocento";
     context.fillText("Click anywhere to return to the homepage!",(sw / 10  ),sh - 50);
 
-    if (!window.top.Cypress) { 
-        var person = prompt("If you want to submit your highscore, please enter your name");
-        if (person) {
-            var highscore = new Highscore();
-            highscore.saveHighscore(person, points,function() {
-                console.log('highscore saved');
-            });
-        }
-
-        document.getElementById("gamestage").addEventListener('click', function(event) {
-            window.location = "../";
+    var person = prompt("If you want to submit your highscore, please enter your name");
+    if (person) {
+        var highscore = new Highscore();
+        highscore.saveHighscore(person, points,function() {
+            console.log('highscore saved');
         });
     }
+
+    document.getElementById("gamestage").addEventListener('click', function(event) {
+        window.location = "http://game.finkingma.com";
+    });
 }
