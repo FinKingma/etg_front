@@ -31,11 +31,11 @@
             willRespondWith: {
                 status: 200,
                 headers: { 'Content-Type': 'application/json' },
-                body: [{
+                body: Pact.Matchers.eachLike({
                     name: 'Klaas',
                     score: '100000',
                     datetime: '2017-07-10T11:50:39.276Z'
-                }]
+                })
             }
         })
         .then(function () { done() }, function (err) { done.fail(err) })
