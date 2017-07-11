@@ -88,7 +88,7 @@
 
       it("should save the new highscore", function(done) {
         highscore = new Highscore();
-        highscore.saveHighscore("Klaas","10000",function() {
+        highscore.saveHighscore("Klaas","1000",function() {
             done();
         });
       })
