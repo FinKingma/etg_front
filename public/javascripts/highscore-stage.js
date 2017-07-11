@@ -6,13 +6,13 @@ $( document ).ready(function() {
             
         generatedTable += '<tr>';
         generatedTable += '<th>';
-        generatedTable += 'Name';
+        generatedTable += 'Who';
         generatedTable += '</th>';
         generatedTable += '<th>';
-        generatedTable += 'Score';
+        generatedTable += 'How much';
         generatedTable += '</th>';
         generatedTable += '<th>';
-        generatedTable += 'Date';
+        generatedTable += 'When';
         generatedTable += '</th>';
         generatedTable += '</tr>';
 
