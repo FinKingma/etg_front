@@ -21,14 +21,11 @@ test:
     - node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
     
 deployment:
-  pre:
+  prod:
     branch: master
     commands:
       - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1 .
       - docker run -d -p 2000:2000 -e HIGHSCOREURL=$HIGHSCOREURL -e MAPMAKERURL=$MAPMAKERURL --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
       - curl -sSf http://localhost:2000 > /dev/null
       - npm run pact-publish
-  prod:
-    branch: master
-    commands:
       - ./deploy.sh
