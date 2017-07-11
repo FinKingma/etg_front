@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   if (isCallerMobile(req)) {
     controls = ['touch'];
   } else {
-    controls = ['keyboard','mouse','touch'];
+    controls = ['keyboard','mouse'];
   }
   res.render('index', { title: 'The Exploratory Testing Game', skipWait: false, controls: controls, hsaurl: hsaurl });
 });
