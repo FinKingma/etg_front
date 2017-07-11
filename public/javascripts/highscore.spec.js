@@ -37,7 +37,7 @@
                 status: 200,
                 body: Pact.Matchers.eachLike({
                     name: Pact.Matchers.somethingLike("Klaas"),
-                    score: Pact.Matchers.somethingLike(100000),
+                    score: Pact.Matchers.somethingLike(1000),
                     date: Pact.Matchers.somethingLike("2017-07-10T11:50:39.276Z")
                 })
             }
@@ -51,7 +51,7 @@
         highscore.getTop10(function(data) {
             expect(data).toBeDefined();
             expect(data[0]["name"]).toBe("Klaas");
-            expect(data[0]["score"]).toBe(100000);
+            expect(data[0]["score"]).toBe(1000);
             done();
         });
       })
@@ -76,7 +76,7 @@
             path: "/api/highscore",
             headers: {
                 "name": "Klaas",
-                "score":"10000"
+                "score":"1000"
             }
           },
           willRespondWith: {
