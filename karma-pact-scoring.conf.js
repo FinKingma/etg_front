@@ -14,15 +14,12 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ["jasmine", "pact"],
-    pact: {},
 
 
     // list of files / patterns to load in the browser
     files: [
         "http://code.jquery.com/jquery-latest.min.js",
         "node_modules/pact-web/pact-web.js",
-        "public/javascripts/map.js",
-        "public/javascripts/map.spec.js",
         "public/javascripts/highscore.js",
         "public/javascripts/highscore.spec.js"
     ],

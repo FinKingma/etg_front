@@ -5,7 +5,11 @@
     var client, provider
 
     beforeAll(function(done) {
-      provider = Pact({ consumer: "ExploratoryTestingGame", provider: "HighscoreApi" })
+      provider = Pact({ 
+        consumer: "ExploratoryTestingGame", 
+        provider: "HighscoreApi" ,
+        port: 1234
+      })
 
       // required for slower Travis CI environment
       setTimeout(function () { done() }, 2000)
@@ -15,6 +19,7 @@
     })
 
     afterAll(function (done) {
+      provider.removeInteractions()
       provider.finalize()
         .then(function () { done() }, function (err) { done.fail(err) })
     })

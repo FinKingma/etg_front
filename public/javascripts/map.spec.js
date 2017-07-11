@@ -5,7 +5,11 @@
     var client, provider
 
     beforeAll(function(done) {
-      provider = Pact({ consumer: "ExploratoryTestingGame", provider: "MapMakerApi" })
+      provider = Pact({ 
+        consumer: "ExploratoryTestingGame", 
+        provider: "MapMakerApi",
+        port: 1234
+      })
 
       // required for slower Travis CI environment
       setTimeout(function () { done() }, 2000)
