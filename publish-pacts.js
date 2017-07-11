@@ -23,6 +23,7 @@ pact.publishPacts(opts)
   })
   .catch(e => {
     console.log('Pact contract publishing failed: ', e)
+    throw new Error(e);
   })
 
   function getDateTime() {
