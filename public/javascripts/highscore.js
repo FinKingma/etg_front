@@ -14,7 +14,8 @@ var Highscore = function() {
             accepts: "application/json",
             success: callback,
             error: function(err){ 
-                throw new Error (err);
+                console.log('no highscore could be retrieved: ' + err);
+                callback(undefined);
             }
         });
     },

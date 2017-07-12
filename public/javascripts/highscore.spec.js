@@ -24,10 +24,10 @@
         .then(function () { done() }, function (err) { done.fail(err) })
     })
 
-    describe("can retrieve top 10 results", function () {
+    describe("can retrieve result Klaas", function () {
       beforeAll(function (done) {
         provider.addInteraction({
-            //state: "Klaas wins with 100k points",
+            state: "Klaas has won with 1k points",
             uponReceiving: "request for top 10 results",
             withRequest: {
                 method: "get",
@@ -93,6 +93,42 @@
         });
       })
 
+      it("successfully verifies", function(done) {
+        provider.verify()
+          .then(function(a) {
+                done()
+          }, function(e) {
+            done.fail(e)
+          })
+      })
+    })
+
+    describe("responds with 418 if something goes wrong", function () {
+      beforeAll(function (done) {
+        provider.addInteraction({
+            state: "no table",
+            uponReceiving: "request for top 10 results",
+            withRequest: {
+                method: "get",
+                path: "/api/highscore"
+            },
+            willRespondWith: {
+                status: 418
+            }
+        })
+        .then(function () { done() }, function (err) { done.fail(err) })
+      })
+
+      it("processes the results", function(done) {
+        //Run the tests
+        highscore = new Highscore();
+        highscore.getTop10(function(data) {
+            expect(data).toBeUndefined();
+            done();
+        });
+      })
+
+      // verify with Pact, and reset expectations
       it("successfully verifies", function(done) {
         provider.verify()
           .then(function(a) {
