@@ -2,6 +2,11 @@ $( document ).ready(function() {
     var highscore = new Highscore();
     highscore.getTop10(function(data) {
         console.log('highscore retrieved: ');
+        if (data === undefined) {
+            var generatedTable = 'no highscore data could be retrieved...';
+        }
+        
+
         var generatedTable = '<table>';
             
         generatedTable += '<tr>';
