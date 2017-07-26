@@ -13,7 +13,7 @@ describe('ET game', function(){
     })
 
     it('should show ranking on landing page', function(){
-        //cy.get('#highscores').should('contain', '1');
+        cy.get('#highscores').should('contain', '1');
         cy.get('#highscores').should('contain', 'Fin');
         cy.get('#highscores').should('contain', '28600');
     });

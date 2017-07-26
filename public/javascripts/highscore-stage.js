@@ -11,6 +11,9 @@ $( document ).ready(function() {
             
         generatedTable += '<tr>';
         generatedTable += '<th>';
+        generatedTable += 'Rank';
+        generatedTable += '</th>';
+        generatedTable += '<th>';
         generatedTable += 'Who';
         generatedTable += '</th>';
         generatedTable += '<th>';
@@ -24,6 +27,9 @@ $( document ).ready(function() {
         for(var i=0;i<data.length;i++) {
             var datetime = new Date(data[i]["date"]);
             generatedTable += '<tr>';
+            generatedTable += '<td>';
+            generatedTable += "#" + (i+1);
+            generatedTable += '</td>';
             generatedTable += '<td>';
             generatedTable += data[i]["name"];
             generatedTable += '</td>';
