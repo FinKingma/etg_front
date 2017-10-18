@@ -47,13 +47,17 @@ jobs:
         command: |
           ./deploy.sh
           npm run pact-publish
+  "manual"
 workflows:
   version: 1
   BDT:
     jobs:
     - build
     - test
-    - deploy:
+    - manual
       type: approval
       requires:
       - test
+    - deploy:
+      requires:
+      - manual
