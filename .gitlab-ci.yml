@@ -27,7 +27,7 @@ run cypress tests:
   tags: 
     - node
   script:
-    - npm run cypress -k 17eb55d1-66b8-4cb3-a245-7dec4d6ee3ba --record
+    - npm run test:web
 
 deploy to aws:
   stage: deploy
