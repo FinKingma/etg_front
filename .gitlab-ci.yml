@@ -5,6 +5,11 @@ stages:
 - deploy
 - test
 
+variables:
+  PACTBROKERURL: "https://xebia.pact.dius.com.au/"
+  MAPMAKERURL: "http://localhost:3000"
+  HIGHSCOREURL: "http://localhost:4000"
+
 run unit and component tests with coverage:
   before_script:
   - npm install
