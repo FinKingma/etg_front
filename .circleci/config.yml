@@ -47,7 +47,9 @@ jobs:
         command: |
           ./deploy.sh
           npm run pact-publish
-  "manual"
+  "manual":
+    steps:
+      - run: echo 'gooo'
 workflows:
   version: 1
   BDT:
