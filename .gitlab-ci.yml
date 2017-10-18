@@ -30,6 +30,8 @@ run cypress tests:
     - npm run test:web
 
 deploy to aws:
+  before_script:
+  - npm install
   stage: deploy
   tags: 
     - docker
