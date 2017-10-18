@@ -59,7 +59,7 @@ workflows:
     jobs:
     - build
     - test
-    - manual
+    - manual:
       type: approval
       requires:
       - test
