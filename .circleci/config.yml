@@ -49,7 +49,10 @@ jobs:
           npm run pact-publish
   "manual":
     steps:
-      - run: echo 'gooo'
+      - run: 
+        name: doe spul
+        command: echo gooo
+
 workflows:
   version: 1
   BDT:
