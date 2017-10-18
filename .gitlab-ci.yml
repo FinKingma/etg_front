@@ -1,0 +1,41 @@
+image: finkingma/etg-highscore-ci:0.7.0
+
+stages:
+- build
+- deploy
+- test
+
+run unit and component tests with coverage:
+  before_script:
+  - npm install
+  stage: build
+  tags: 
+    - node
+  script:
+    - npm run test:unit
+    - npm run test:unit-int
+
+run cypress tests:
+  before_script:
+  - npm install
+  stage: build
+  tags: 
+    - node
+  script:
+    - node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
+
+deploy to aws:
+  stage: deploy
+  tags: 
+    - docker
+    - node
+  script: 
+    - ./deploy.sh
+    - npm run pact-publish
+  allow_failure: false
+  when: manual
+
+trigger e2e tests:
+  stage: test
+  script:
+  - "curl -X POST -F token=0cdc684c140adb6015cf2a117c650a -F ref=master https://gitlab.com/api/v4/projects/3836198/trigger/pipeline"
