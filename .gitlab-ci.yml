@@ -27,7 +27,7 @@ run cypress tests:
   tags: 
     - node
   script:
-    - node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
+    - npm run cypress
 
 deploy to aws:
   stage: deploy
