@@ -1,52 +1,54 @@
 version: 2
+working_directory: ~/etg_scoring
+environment:
+  PACTBROKERURL: 'https://xebia.pact.dius.com.au/'
+  MAPMAKERURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:3000'
+  HIGHSCOREURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:4000'
+  TAG: 'prod'
+  JUNIT_REPORT_PATH: $CIRCLE_TEST_REPORTS/junit/
 jobs:
   build:
-    working_directory: ~/etg_scoring
     docker:      
-      - image: finkingma/etg-highscore-ci:0.7.0
-        environment:
-          PACTBROKERURL: 'https://xebia.pact.dius.com.au/'
-          MAPMAKERURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:3000'
-          HIGHSCOREURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:4000'
-          TAG: 'prod'
-          JUNIT_REPORT_PATH: $CIRCLE_TEST_REPORTS/junit/
+    - image: finkingma/etg-highscore-ci:0.7.0
     steps:
       - checkout
       - run:
           name: install dependencies
           command: | 
             npm install
-      - test1:
+      - run:
           name: run unit and component tests
           command: |
             npm run test:unit
             npm run test:unit-int
-      - test2:
-          name: run cypress tests
-          command: |
-            node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
-      - setup_remote_docker
-      - test3:
-          name: run docker test
-          command: |
-            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1 .
-            docker run -d -p 2000:2000 -e HIGHSCOREURL=$HIGHSCOREURL -e MAPMAKERURL=$MAPMAKERURL --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
-            curl -sSf http://localhost:2000 > /dev/null
-      - deploy:
-          name: deploy to aws
-          command: |
-            npm run pact-publish
-            ./deploy.sh
+  test:
+    docker:      
+    - image: finkingma/etg-highscore-ci:0.7.0
+    steps:
+    - run:
+      name: run cypress
+      command: |
+        node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
+    - setup_remote_docker
+    - run:
+      name: run docker test
+      command: |
+        docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1 .
+        docker run -d -p 2000:2000 -e HIGHSCOREURL=$HIGHSCOREURL -e MAPMAKERURL=$MAPMAKERURL --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
+        curl -sSf http://localhost:2000 > /dev/null
+  deploy:
+    name: deploy to aws
+    command: |
+      npm run pact-publish
+      ./deploy.sh
 Workflows:
   version: 1
   BDT:
     jobs:
-    - test1
-    - test2
-    - setup_remote_docker
-    - test3
+    - build
+    - test
       requires:
-      - test
+      - build
     - deploy:
       type: approval
       requires:
