@@ -20,6 +20,7 @@
     "sinon": "^1.17.7"
   },
   "devDependencies": {
+    "cypress": "^1.0.2",
     "jasmine-core": "^2.4.1",
     "karma": "^1.0.0",
     "karma-chrome-launcher": "^1.0.1",

@@ -10,10 +10,6 @@ machine:
     TAG: 'prod'
     JUNIT_REPORT_PATH: $CIRCLE_TEST_REPORTS/junit/
 
-dependencies:
-  post:
-    - npm install -g cypress-cli
-
 test:
   override:
     - npm run test:unit
