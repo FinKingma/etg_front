@@ -41,11 +41,12 @@ jobs:
           curl -sSf http://localhost:2000 > /dev/null
   "deploy":
     steps:
+      - checkout
       - run:
         name: deploy to aws
         command: |
-          npm run pact-publish
           ./deploy.sh
+          npm run pact-publish
 workflows:
   version: 1
   BDT:
