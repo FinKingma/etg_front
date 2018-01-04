@@ -5,7 +5,6 @@ environment:
   HIGHSCOREURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:4000'
   TAG: 'prod'
   JUNIT_REPORT_PATH: $CIRCLE_TEST_REPORTS/junit/
-  CHROME_BIN: 'google-chrome'
 
 jobs:
   build:
@@ -16,7 +15,9 @@ jobs:
       - checkout
       - run:
           name: install dependencies
-          command: npm install
+          command: |
+            npm install
+            export CHROME_BIN=chromium-browser
       - run:
           name: run unit and component tests
           command: |
@@ -67,10 +68,10 @@ workflows:
     - test:
         requires:
         - build
-    - manual:
-        type: approval
-        requires:
-        - test
-    - deploy:
-        requires:
-        - manual
+    # - manual:
+    #     type: approval
+    #     requires:
+    #     - test
+    # - deploy:
+    #     requires:
+    #     - manual
