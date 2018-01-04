@@ -20,7 +20,7 @@ jobs:
       - run:
           name: run unit and component tests
           command: |
-            export CHROME_BIN=chromium-browser
+            export CHROME_BIN=/usr/bin/chromium-browser
             npm run test:unit
             npm run test:unit-int
   
