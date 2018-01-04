@@ -31,6 +31,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install cypress
+          command: |
+            npm install
+      - run:
           name: run cypress
           command: |
             node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
