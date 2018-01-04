@@ -17,10 +17,10 @@ jobs:
           name: install dependencies
           command: |
             npm install
-            export CHROME_BIN=chromium-browser
       - run:
           name: run unit and component tests
           command: |
+            export CHROME_BIN=chromium-browser
             npm run test:unit
             npm run test:unit-int
   
