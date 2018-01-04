@@ -34,6 +34,7 @@ jobs:
           name: install cypress
           command: |
             npm install
+            npm install cypress
       - run:
           name: run cypress
           command: |
