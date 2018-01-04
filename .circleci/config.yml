@@ -9,7 +9,7 @@ environment:
 jobs:
   build:
     docker:      
-    - image: finkingma/etg-highscore-ci:0.7.0
+    - image: circleci/node:latest
     working_directory: ~/etg_scoring
     steps:
       - checkout
@@ -20,7 +20,7 @@ jobs:
       - run:
           name: run unit and component tests
           command: |
-            #export CHROME_BIN=google-chrome
+            export CHROME_BIN=google-chrome
             npm run test:unit
             npm run test:unit-int
   
