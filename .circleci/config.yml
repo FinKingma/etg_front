@@ -33,7 +33,7 @@ jobs:
       - run:
           name: install cypress
           command: |
-            npm install cypress
+            npm install
       - run:
           name: run cypress
           command: |
