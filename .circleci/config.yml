@@ -5,6 +5,7 @@ environment:
   HIGHSCOREURL: 'http://etg-balancer-862594806.eu-central-1.elb.amazonaws.com:4000'
   TAG: 'prod'
   JUNIT_REPORT_PATH: $CIRCLE_TEST_REPORTS/junit/
+  CHROME_BIN: 'google-chrome'
 
 jobs:
   "build":
