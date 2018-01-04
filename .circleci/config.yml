@@ -65,6 +65,8 @@ workflows:
     jobs:
     - build
     - test
+        requires:
+        - build
     - manual:
         type: approval
         requires:
