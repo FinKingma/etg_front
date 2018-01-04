@@ -68,10 +68,10 @@ workflows:
     - test:
         requires:
         - build
-    # - manual:
-    #     type: approval
-    #     requires:
-    #     - test
-    # - deploy:
-    #     requires:
-    #     - manual
+    - manual:
+        type: approval
+        requires:
+        - test
+    - deploy:
+        requires:
+        - manual
