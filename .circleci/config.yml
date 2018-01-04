@@ -8,7 +8,7 @@ environment:
   CHROME_BIN: 'google-chrome'
 
 jobs:
-  "build":
+  build:
     docker:      
     - image: finkingma/etg-highscore-ci:0.7.0
     working_directory: ~/etg_scoring
@@ -23,7 +23,7 @@ jobs:
             npm run test:unit
             npm run test:unit-int
   
-  "test":
+  test:
     docker:      
     - image: finkingma/etg-highscore-ci:0.7.0
     working_directory: ~/etg_scoring
@@ -40,7 +40,7 @@ jobs:
           docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1 .
           docker run -d -p 2000:2000 -e HIGHSCOREURL=$HIGHSCOREURL -e MAPMAKERURL=$MAPMAKERURL --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
           curl -sSf http://localhost:2000 > /dev/null
-  "deploy":
+  deploy:
     docker:      
     - image: finkingma/etg-highscore-ci:0.7.0
     working_directory: ~/etg_scoring
@@ -51,7 +51,7 @@ jobs:
         command: |
           ./deploy.sh
           npm run pact-publish
-  "manual":
+  manual:
     docker:      
     - image: finkingma/etg-highscore-ci:0.7.0
     working_directory: ~/etg_scoring
@@ -59,9 +59,8 @@ jobs:
       - run: 
         name: doe spul
         command: echo gooo
-
 workflows:
-  version: 1
+  version: 2
   BDT:
     jobs:
     - build
