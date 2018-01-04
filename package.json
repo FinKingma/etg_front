@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "test:unit": "karma start",
     "test:unit-int": "karma start karma-pact-mapmaker.conf.js && karma start karma-pact-scoring.conf.js",
-    "test:web": "cypress run",
+    "test:web": "node ./bin/www & cypress run",
     "pact-publish": "node publish-pacts.js"
   },
   "dependencies": {

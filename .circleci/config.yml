@@ -37,7 +37,7 @@ jobs:
       - run:
           name: run cypress
           command: |
-            node ./bin/www & cypress run --reporter junit --reporter-options "mochaFile=$CIRCLE_TEST_REPORTS/junit/cypress-test-output.xml,toConsole=true"
+            npm run test:web
       - setup_remote_docker
       - run:
           name: run docker test
