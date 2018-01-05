@@ -46,7 +46,7 @@ jobs:
           name: run docker test
           command: |
             docker build -t $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1 .
-            docker run -d -p 2000:2000 -e HIGHSCOREURL=$HIGHSCOREURL -e MAPMAKERURL=$MAPMAKERURL --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
+            docker run -d -p 2000:2000 -e HIGHSCOREURL=http://localhost:4000 -e MAPMAKERURL=http://localhost:4000 --name front $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/front:$CIRCLE_SHA1; sleep 10
             curl -sSf http://localhost:2000 > /dev/null
   deploy:
     docker:      
