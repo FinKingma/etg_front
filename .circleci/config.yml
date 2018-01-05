@@ -33,7 +33,8 @@ jobs:
       - run:
           name: install cypress
           command: |
-            apt-get libxss1
+            apt-get update
+            apt-get install libxss1
             npm install
             npm install cypress
       - run:
