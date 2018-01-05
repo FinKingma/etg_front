@@ -33,7 +33,7 @@ jobs:
       - run:
           name: install cypress
           command: |
-            apt-get install xvfb libgtk2.0-0 libnss3 libasound2
+            apt-get libxss1
             npm install
             npm install cypress
       - run:
