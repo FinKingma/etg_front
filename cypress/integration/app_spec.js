@@ -6,13 +6,13 @@ describe('ET game', function(){
         // gets reset to a clean state
         //
         // https://on.cypress.io/api/visit
-        cy.server();
-        cy.route("GET","/api/mapmaker", "fixture:map.json");
-        cy.route("GET","/api/highscore", "fixture:highscores.json");
+        // cy.server();
+        cy.intercept("GET","mapmaker", {fixture:'map.json'});
+        cy.intercept("GET","highscore", {fixture:'highscores.json'});
         cy.visit("http://localhost:2000");
     })
 
-    it('should show ranking on landing page', function(){
+    it.only('should show ranking on landing page', function(){
         cy.get('#highscores').should('contain', '1');
         cy.get('#highscores').should('contain', 'Fin');
         cy.get('#highscores').should('contain', '28600');

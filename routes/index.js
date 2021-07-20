@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+process.env.HIGHSCOREURL='http://localhost:4000'
 if (!process.env.HIGHSCOREURL) throw new Error('Please specify where the highscore api can be found with HIGHSCOREURL');
 
 /* GET home page. */
