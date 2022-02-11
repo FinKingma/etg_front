@@ -22,7 +22,7 @@
   "devDependencies": {
     "cypress": "^7.1.0",
     "jasmine-core": "^2.4.1",
-    "karma": "^1.0.0",
+    "karma": "^6.3.14",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-junit-reporter": "^1.2.0",
